@@ -13,11 +13,11 @@ project_name:
 
 project_slug:
   type: str
-  default: "[[ project_name|lower|replace(' ', '-') ]]"  # Directory-safe id
+  default: "{{ project_name|lower|replace(' ', '-') }}"  # Directory-safe id
 
 package_slug:
   type: str
-  default: "[[ project_slug|replace('-', '_') ]]"        # Python package-safe
+  default: "{{ project_slug|replace('-', '_') }}"        # Python package-safe
 
 description:
   type: str
@@ -27,17 +27,17 @@ description:
 author_name:
   type: str
   help: "Your name"
-  default: "Your Name"
+  default: "Dipen Sangurdekar"
 
 author_email:
   type: str
   help: "Your email address"
-  default: "your.email@example.com"
+  default: "dipenps@gmail.com"
 
 github_username:
   type: str
   help: "Your GitHub username"
-  default: "yourusername"
+  default: "dipenps"
 
 python_version:
   type: str
