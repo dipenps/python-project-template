@@ -1,0 +1,47 @@
+python-uv-agent-template/
+├── copier.yml                     # Copier template configuration at template root
+├── README.md                      # Project documentation
+├── PLAN.md                        # Project planning document
+├── TODO.md                        # Task tracking
+├── SPEC.md                        # Technical specification
+├── PROTOCOL.md                    # Agent communication protocols
+├── CONSTRAINTS.md                 # System constraints
+├── DATA_MANIFEST.md               # Data models and schemas
+├── MODEL_MANIFEST.md              # System models
+├── EVAL_PLAN.md                   # Evaluation and testing plan
+├── DECISIONS.md                   # Architecture decisions
+├── DEPLOYMENT.md                  # Deployment guide
+├── GLOSSARY.md                    # Terms and definitions
+├── pyproject.toml                 # uv project configuration
+├── mypy.ini                       # MyPy type checking configuration
+├── LICENSE                        # License file
+├── project-directory.md           # This file (helper; excluded from copy)
+├── docs/                          # Documentation
+│   └── index.md                   # Main documentation
+├── scripts/                       # Maintenance scripts
+│   └── bootstrap.sh               # Development setup script
+├── tests/                         # Test suite
+│   └── test_smoke.py              # Smoke tests
+├── tools/                         # Development tools
+│   └── precommit-msg.sh           # Commit message validation
+└── src/                           # Source code
+    └── [[ package_slug ]] /       # Rendered to the Python package name
+        ├── __init__.py
+        ├── cli.py                 # Command-line interface
+        ├── core/                  # Core business logic
+        │   ├── __init__.py
+        │   ├── agent.py           # Agent implementation
+        │   ├── exceptions.py      # Custom exceptions
+        │   └── system.py          # System configuration
+        ├── utils/                 # Utility functions
+        │   ├── __init__.py
+        │   ├── config.py          # Configuration utilities
+        │   ├── logging.py         # Logging utilities
+        │   └── validation.py      # Validation utilities
+        └── agents/                # Agent protocols
+            ├── __init__.py
+            └── protocols.py       # Agent communication protocols
+
+# Notes:
+# - This template is root-based; no subdirectory indirection is used.
+# - The placeholder [[ package_slug ]] is resolved from answers at render time.
