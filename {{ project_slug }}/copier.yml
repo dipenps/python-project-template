@@ -1,0 +1,94 @@
+# Copier template configuration for python-uv-agent-template
+# This file defines the variables and rules for the template
+
+# Template metadata
+_template_version: "1.0.0"
+_template_description: "A Python project template using uv for package management with agent-based architecture"
+
+# Required variables
+project_name:
+  type: str
+  help: "The name of your project (e.g., 'My Awesome Project')"
+  default: "My Python Agent Project"
+
+project_slug:
+  type: str
+  help: "The slugified version of the project name (e.g., 'my-awesome-project')"
+  default: "my-python-agent-project"
+
+package_slug:
+  type: str
+  help: "The Python package name (e.g., 'my_awesome_project')"
+  default: "my_python_agent_project"
+
+description:
+  type: str
+  help: "A brief description of the project"
+  default: "A Python project with agent-based architecture using uv for package management"
+
+author_name:
+  type: str
+  help: "Your name"
+  default: "Your Name"
+
+author_email:
+  type: str
+  help: "Your email address"
+  default: "your.email@example.com"
+
+github_username:
+  type: str
+  help: "Your GitHub username"
+  default: "yourusername"
+
+python_version:
+  type: str
+  help: "Python version to use"
+  default: "3.11"
+
+license:
+  type: str
+  help: "License for the project"
+  choices: ["MIT", "Apache-2.0", "GPL-3.0", "BSD-3-Clause", "Unlicense"]
+  default: "MIT"
+
+# Optional variables
+use_pre_commit:
+  type: bool
+  help: "Whether to include pre-commit hooks"
+  default: true
+
+use_github_actions:
+  type: bool
+  help: "Whether to include GitHub Actions workflow"
+  default: true
+
+use_mypy:
+  type: bool
+  help: "Whether to include mypy configuration"
+  default: true
+
+use_ruff:
+  type: bool
+  help: "Whether to include ruff configuration"
+  default: true
+
+# Template rules
+_skip_if_exists:
+  - "{{ project_slug }}/.git"
+  - "{{ project_slug }}/uv.lock"
+
+# File patterns to process
+_templates_suffix: ".j2"
+
+# Directories to create
+_create_directories:
+  - "{{ project_slug }}/src/{{ package_slug }}/core"
+  - "{{ project_slug }}/src/{{ package_slug }}/utils"
+  - "{{ project_slug }}/src/{{ package_slug }}/agents"
+  - "{{ project_slug }}/tests"
+  - "{{ project_slug }}/scripts"
+  - "{{ project_slug }}/tools"
+  - "{{ project_slug }}/docs"
+  - "{{ project_slug }}/.github/workflows"
+
