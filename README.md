@@ -57,18 +57,20 @@ uv run ruff format .
 └── .github/workflows/               # CI/CD workflows
 ```
 
-## Documentation
+## AI Context
 
-- [Project Plan](PLAN.md)
-- [Technical Specification](SPEC.md)
-- [Protocol Documentation](PROTOCOL.md)
-- [Constraints](CONSTRAINTS.md)
-- [Data Manifest](DATA_MANIFEST.md)
-- [Model Manifest](MODEL_MANIFEST.md)
-- [Evaluation Plan](EVAL_PLAN.md)
-- [Architecture Decisions](DECISIONS.md)
-- [Deployment Guide](DEPLOYMENT.md)
-- [Glossary](GLOSSARY.md)
+This project includes a `context/` directory with detailed documentation to provide a comprehensive understanding of the project for an AI agent. The files are numbered to suggest a reading order.
+
+- [Technical Specification](context/01_SPEC.md)
+- [Project Plan](context/02_PLAN.md)
+- [Constraints](context/03_CONSTRAINTS.md)
+- [Protocol Documentation](context/04_PROTOCOL.md)
+- [Data Manifest](context/05_DATA_MANIFEST.md)
+- [Model Manifest](context/06_MODEL_MANIFEST.md)
+- [Evaluation Plan](context/07_EVAL_PLAN.md)
+- [Glossary](context/08_GLOSSARY.md)
+- [Architecture Decisions](context/09_DECISIONS.md)
+- [Deployment Guide](context/10_DEPLOYMENT.md)
 
 ## Contributing
 

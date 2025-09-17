@@ -2,7 +2,7 @@ _min_copier_version: "9.0.0"
 
 # comment: root-based template (no _subdirectory)
 _exclude:
-  - "project-directory.md"        # comment: helper file not part of template
+  - "docs/project-structure.md"        # comment: helper file not part of template
   - ".git/"                       # comment: ensure VCS metadata isn't copied
   - ".python-version"             # comment: optional; environment-specific
 

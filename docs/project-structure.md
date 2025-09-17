@@ -1,17 +1,18 @@
 python-uv-agent-template/
 ├── copier.yml                     # Copier template configuration at template root
 ├── README.md                      # Project documentation
-├── PLAN.md                        # Project planning document
 ├── TODO.md                        # Task tracking
-├── SPEC.md                        # Technical specification
-├── PROTOCOL.md                    # Agent communication protocols
-├── CONSTRAINTS.md                 # System constraints
-├── DATA_MANIFEST.md               # Data models and schemas
-├── MODEL_MANIFEST.md              # System models
-├── EVAL_PLAN.md                   # Evaluation and testing plan
-├── DECISIONS.md                   # Architecture decisions
-├── DEPLOYMENT.md                  # Deployment guide
-├── GLOSSARY.md                    # Terms and definitions
+├── context/                       # AI agent context
+│   ├── 01_SPEC.md                 # Technical specification
+│   ├── 02_PLAN.md                 # Project planning document
+│   ├── 03_CONSTRAINTS.md          # System constraints
+│   ├── 04_PROTOCOL.md             # Agent communication protocols
+│   ├── 05_DATA_MANIFEST.md        # Data models and schemas
+│   ├── 06_MODEL_MANIFEST.md       # System models
+│   ├── 07_EVAL_PLAN.md            # Evaluation and testing plan
+│   ├── 08_GLOSSARY.md             # Terms and definitions
+│   ├── 09_DECISIONS.md            # Architecture decisions
+│   └── 10_DEPLOYMENT.md           # Deployment guide
 ├── pyproject.toml                 # uv project configuration
 ├── mypy.ini                       # MyPy type checking configuration
 ├── LICENSE                        # License file
