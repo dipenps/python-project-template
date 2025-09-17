@@ -18,6 +18,9 @@ This project uses [uv](https://github.com/astral-sh/uv) for fast Python package 
 git clone https://github.com/{{ github_username }}/{{ project_slug }}.git
 cd {{ project_slug }}
 
+# Copy the file to a new project
+ uvx copier copy --vcs-ref=main https://github.com/dipenps/python-project-template my-new-project
+
 # Install dependencies
 uv sync
 
