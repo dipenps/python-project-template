@@ -1,0 +1,156 @@
+# .cursorrules — Python Project Best Practices
+# Purpose: Enforce clean, reliable, testable Python that ships.
+# Scope: Applies to all Python repos in this workspace unless overridden locally.
+
+==================================================
+HIGH-LEVEL PRINCIPLES
+==================================================
+1. Shipping > cleverness. Prefer boring, readable solutions over "smart" one-liners.
+2. Tests are non-optional. Any change touching logic must include/adjust tests.
+3. Types are part of the code. Use typing and mypy; treat type errors like test failures.
+4. One source of truth. Config via pydantic (or dynaconf) and env vars; no magic constants.
+5. Automation everywhere. Pre-commit, CI, codegen, docs—no manual drudgery.
+6. Reproducibility or it didn’t happen. Lock dependencies and pin tools; log versions and seeds.
+7. Security by default. No secrets in code; minimum permissions; dependencies scanned.
+8. Small PRs, crisp commits. Describe intent, not just “fix”.
+9. Docs that someone can actually follow. Update README and ADRs when behavior changes.
+10. Fail loudly, early, and in the right place. Rich errors with context, central logging.
+
+==================================================
+CODING STANDARDS
+==================================================
+- Use **Ruff** for formatting (line length 88–100), linting, and import sorting. It replaces Black, isort, and Flake8 with a single, faster tool.
+- Typing: Python ≥3.11. All public APIs must be fully typed. mypy strict mode.
+- Docstrings: Google/NumPy style. Explain "why", not "what".
+- Errors: Raise specific exceptions. Use `raise ... from e`. Never swallow errors silently.
+- Concurrency: async for I/O, multiprocessing for CPU. Don’t block the event loop.
+- Logging: structlog or logging w/ JSON. No prints.
+
+==================================================
+PROJECT STRUCTURE
+==================================================
+project/
+├── pyproject.toml
+├── uv.lock
+├── src/package_name/
+├── tests/
+├── scripts/
+├── docs/
+├── .github/workflows/
+└── .env.example
+
+==================================================
+TESTING POLICY
+==================================================
+- pytest only, coverage ≥85%.
+- Property-based tests w/ hypothesis for core algorithms.
+- Unit tests = isolated, deterministic.
+- Each bug fix requires a regression test.
+
+==================================================
+DEPENDENCIES & SECURITY
+==================================================
+- Pin direct deps in pyproject. Commit uv.lock.
+- Weekly dep audit with pip-audit.
+- No secrets in code. Use env/secret managers.
+- Block PRs if audit fails.
+
+==================================================
+PERFORMANCE & RELIABILITY
+==================================================
+- Measure before optimizing (py-spy, scalene, cProfile).
+- Use timeouts/retries with jitter on all external calls.
+- Avoid global caches unless justified.
+
+==================================================
+GIT & PR HYGIENE
+==================================================
+- Branch naming: feat/<topic>, fix/<issue>, chore/<task>.
+- Commit messages: imperative mood, "why + what".
+- PR size <400 LOC preferred. Must include scope, tests, rollback plan.
+- Require review; keep main releasable.
+
+==================================================
+CI / CD
+==================================================
+- CI steps:
+  1) uv sync
+  2) ruff format --check .
+  3) ruff check .
+  4) mypy
+  5) pytest --cov
+  6) pip-audit
+- Fail merge on errors. Publish wheels on tag.
+
+==================================================
+PRE-COMMIT
+==================================================
+- ruff format
+- ruff check --fix
+- mypy (changed files)
+- detect-secrets
+- pytest quick checks
+- trailing-whitespace + EOF fixer
+
+==================================================
+FRAMEWORK NOTES
+==================================================
+FastAPI:
+- Pydantic models for requests/responses.
+- /healthz and /ready endpoints.
+- Error handlers, request logging, correlation IDs.
+
+Django:
+- Follow MVT. ORM best practices. Migrations mandatory.
+
+Data/ML:
+- Notebooks = exploration only. Commit via jupytext.
+- Seed everything. Version datasets/models.
+- Document provenance, bias, and metadata.
+
+==================================================
+WHAT CURSOR SHOULD DO
+==================================================
+- When creating a module: scaffold file w/ docstring + typed stubs + test file.
+- When fixing errors: explain cause, propose minimal fix, add regression test.
+- When refactoring: preserve behavior, reduce complexity, update tests.
+- When adding features: propose API, schemas, and draft tests first.
+- When deps change: update pyproject + lockfile, run audit.
+
+==================================================
+PROMPT TEMPLATES
+==================================================
+1. Add a Feature (TDD)
+"""
+As a senior Python dev, implement <feature>.
+Constraints:
+- Modify only <modules>.
+- Add tests under tests/unit/ covering <cases>.
+- Keep public API typed + documented.
+Deliver:
+- Diff patch + test plan.
+"""
+
+2. Debug a Failure
+"""
+Given this traceback + code, identify root cause and smallest fix.
+Add a regression test. Explain why it won’t recur.
+"""
+
+3. Refactor for Clarity
+"""
+Refactor <module> to reduce complexity, preserve behavior.
+Targets: cyclomatic complexity <10, functions <120 lines.
+Include before/after + updated tests.
+"""
+
+==================================================
+NON-NEGOTIABLES
+==================================================
+- No `print` for logging.
+- No `import *`.
+- No global mutable state.
+- No “TODO” without linked issue.
+- No commented-out dead code.
+
+# End of file.
