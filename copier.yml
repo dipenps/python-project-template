@@ -1,0 +1,73 @@
+_min_copier_version: "9.0.0"
+
+# comment: root-based template (no _subdirectory)
+_exclude:
+  - "docs/project-structure.md"        # comment: helper file not part of template
+  - ".git/"                       # comment: ensure VCS metadata isn't copied
+  - ".python-version"             # comment: optional; environment-specific
+
+# comment: ask these questions when rendering
+project_name:
+  type: str
+  default: "My New Project"        # Human-friendly name
+
+project_slug:
+  type: str
+  default: "{{ project_name|lower|replace(' ', '-') }}"  # Directory-safe id
+
+package_slug:
+  type: str
+  default: "{{ project_slug|replace('-', '_') }}"        # Python package-safe
+
+description:
+  type: str
+  help: "A brief description of the project"
+  default: "A general-purpose Python project using uv for package management"
+
+author_name:
+  type: str
+  help: "Your name"
+  default: "Dipen Sangurdekar"
+
+author_email:
+  type: str
+  help: "Your email address"
+  default: "dipenps@gmail.com"
+
+github_username:
+  type: str
+  help: "Your GitHub username"
+  default: "dipenps"
+
+python_version:
+  type: str
+  help: "Python version to use"
+  default: "3.11"
+
+license:
+  type: str
+  help: "License for the project"
+  choices: ["MIT", "Apache-2.0", "GPL-3.0", "BSD-3-Clause", "Unlicense"]
+  default: "MIT"
+
+# comment: feature flags
+use_pre_commit:
+  type: bool
+  help: "Whether to include pre-commit hooks"
+  default: true
+
+use_github_actions:
+  type: bool
+  help: "Whether to include GitHub Actions workflow"
+  default: true
+
+use_mypy:
+  type: bool
+  help: "Whether to include mypy configuration"
+  default: true
+
+use_ruff:
+  type: bool
+  help: "Whether to include ruff configuration"
+  default: true
+
