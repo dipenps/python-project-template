@@ -69,6 +69,7 @@ GIT & PR HYGIENE
 - Commit messages: imperative mood, "why + what".
 - PR size <400 LOC preferred. Must include scope, tests, rollback plan.
 - Require review; keep main releasable.
+- Maintain a detailed changelog (CHANGELOG.md) with all user-facing changes, grouped by type (Added, Changed, Deprecated, Removed, Fixed, Security). Update on every release.
 
 ==================================================
 CI / CD
