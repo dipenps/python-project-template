@@ -17,6 +17,15 @@ HIGH-LEVEL PRINCIPLES
 10. Fail loudly, early, and in the right place. Rich errors with context, central logging.
 
 ==================================================
+PLANNING & EXECUTION (BEADS / AGENTS.MD)
+==================================================
+- During project planning and execution, follow AGENTS.md and use **bd** (beads) for issue tracking.
+- Before starting work: run `bd ready` to find available work; use `bd show <id>` and `bd update <id> --status in_progress` to claim and track work.
+- When planning: align tasks with beads issues; create issues for follow-up work rather than leaving loose ends.
+- When completing work: close issues with `bd close <id>`, run `bd sync`, and complete the "Landing the Plane" workflow in AGENTS.md (quality gates, push to remote, hand off).
+- Treat AGENTS.md as the source of truth for session workflow and completion criteria.
+
+==================================================
 CODING STANDARDS
 ==================================================
 - Use **Ruff** for formatting (line length 88–100), linting, and import sorting. It replaces Black, isort, and Flake8 with a single, faster tool.
